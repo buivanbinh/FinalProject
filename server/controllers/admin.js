@@ -3,8 +3,8 @@ const Order = require("../models/order");
 
 exports.orders = async (req, res) => {
   let allOrders = await Order.find({})
+    .populate({ path: "products", populate: { path: "product" } })
     .sort("-createdAt")
-    .populate("products.product")
     .exec();
 
   res.json(allOrders);

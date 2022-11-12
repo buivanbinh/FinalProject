@@ -17,10 +17,9 @@ const initialState = {
   shipping: "",
   quantity: "",
   images: [],
-  colors: ["Black", "Brown", "Silver", "White", "Blue"],
-  brands: ["Apple", "Samsung", "Microsoft", "Lenovo", "ASUS"],
+  origins: ["VietNam", "Korea", "Japan", "China", "United Kingdom"],
   color: "",
-  brand: "",
+  origin: "",
 };
 
 const ProductUpdate = ({ match, history }) => {

@@ -19,11 +19,11 @@ const {
 } = require("../controllers/product");
 
 // routes
-router.post("/product", authCheck, adminCheck, create);
+router.post("/product", create); //authCheck, adminCheck,
 router.get("/products/total", productsCount);
 
 router.get("/products/:count", listAll); // products/100
-router.delete("/product/:slug", authCheck, adminCheck, remove);
+router.delete("/product/:slug", remove); //authCheck, adminCheck,
 router.get("/product/:slug", read);
 router.put("/product/:slug", authCheck, adminCheck, update);
 

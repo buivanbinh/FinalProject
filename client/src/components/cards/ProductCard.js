@@ -11,6 +11,10 @@ const { Meta } = Card;
 
 const ProductCard = ({ product }) => {
   const [tooltip, setTooltip] = useState("Click to add");
+  const [count, setCount] = useState(0)
+  const increment = () => {
+    setCount(count + 1)
+  }
 
   // redux
   const { user, cart } = useSelector((state) => ({ ...state }));
@@ -60,7 +64,7 @@ const ProductCard = ({ product }) => {
         <div className="text-center pt-1 pb-3">No rating yet</div>
       )}
 
-      <Card
+      {/* <Card
         cover={
           <img
             src={images && images.length ? images[0].url : laptop}
@@ -84,7 +88,43 @@ const ProductCard = ({ product }) => {
           title={`${title} - $${price}`}
           description={`${description && description.substring(0, 40)}...`}
         />
-      </Card>
+      </Card> */}
+      <div className='box'>
+        <div className='product mtop'>
+          <div className='img'>
+            <span className='discount'>Sale Off</span>
+            <img src={images && images.length ? images[0].url : laptop} alt='' />
+            <div className='product-like'>
+              <label>{count}</label> <br />
+              <i className='fa-regular fa-heart' onClick={increment}></i>
+            </div>
+          </div>
+          <div className='product-details'>
+            <h3>{title}</h3>
+            <div className='rate'>
+              <i className='fa fa-star'></i>
+              <i className='fa fa-star'></i>
+              <i className='fa fa-star'></i>
+              <i className='fa fa-star'></i>
+              <i className='fa fa-star'></i>
+            </div>
+            <div className='price'>
+              <h4>${price}.00 </h4>
+              {/* step : 3  
+                     if hami le button ma click garryo bahne 
+                    */}
+              <div className="vbt">
+              <Link className="view" to={`/product/${slug}`}>
+                <i className='fa fa-plus'></i>
+              </Link>
+              <button onClick={() => handleAddToCart()}>
+                <i className='fa fa-plus'></i>
+              </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
